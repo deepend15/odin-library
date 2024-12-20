@@ -1,4 +1,7 @@
-const myLibrary = [];
+const myLibrary = [
+    {title: "Wool", author: "Hugh Howey", pages: 538, haveRead: "have read"},
+    {title: "The Institute", author: "Steven King", pages: 576, haveRead: "have read"},
+];
 
 function Book(title, author, pages, haveRead) {
     this.title = title;
