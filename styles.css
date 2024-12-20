@@ -1,5 +1,6 @@
 html {
     box-sizing: border-box;
+    font-size: 62.5%;
 }
 
 *,
@@ -11,4 +12,57 @@ html {
 * {
     margin: 0;
     padding: 0;
+}
+
+body {
+    font-size: 2rem;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+h1, h2, h3, h4, h5 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+.main-container {
+    padding: 50px 75px;
+    display: grid;
+    justify-items: center;
+    gap: 30px;
+}
+
+h1 {
+    font-size: 2.6rem;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
+
+.card {
+    height: 300px;
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 8px;
+    display: grid;
+    justify-items: center;
+    grid-template-rows: 1fr repeat(3, min-content);
+    padding: 20px;
+    gap: 15px;
+    text-align: center;
+}
+
+.card > .title {
+    align-self: center;
+    font-size: 2.3rem;
+}
+
+.card > p {
+    font-size: 1.8rem;
 }
