@@ -31,7 +31,7 @@ function displayBooks(library) {
         author.textContent = `by ${book.author}`;
         card.appendChild(author);
         const pages = document.createElement("p");
-        pages.textContent = `${book.pages} pages`
+        pages.textContent = `${book.pages} pages`;
         card.appendChild(pages);
         const haveRead = document.createElement("p");
         haveRead.textContent = `${book.haveRead}`;
