@@ -41,3 +41,16 @@ function displayBooks(library) {
         card.appendChild(haveRead);
     }
 }
+
+const dialog = document.querySelector("dialog");
+const newBookButton = document.querySelector(".new-book-button");
+const dialogCloseButton = document.querySelector("dialog button");
+
+newBookButton.addEventListener("click", () => {
+    dialog.showModal();
+})
+
+dialogCloseButton.addEventListener("click", () => {
+    dialog.close();
+})
+

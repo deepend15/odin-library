@@ -39,6 +39,20 @@ h1 {
     font-size: 2.6rem;
 }
 
+.new-book-button {
+    font-size: 1.8rem;
+    padding: 5px 18px;
+    border: 1px solid gray;
+    border-radius: 12px;
+}
+
+#addBookDialog {
+    padding: 15px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .card-container {
     display: flex;
     flex-wrap: wrap;
