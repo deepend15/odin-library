@@ -47,11 +47,60 @@ h1 {
 }
 
 #addBookDialog {
-    padding: 15px;
+    padding: 40px 25px 30px 25px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+#addBookDialog > form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+#addBookDialog > form > p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+#addBookDialog > form > p > input,
+#addBookDialog > form > p > select {
+    width: 60%;
+}
+
+#addBookDialog > form > p > label {
+    width: 40%;
+}
+
+#addBookDialog > form > p > input {
+    padding: 5px;
+    border: 1px solid black;
+}
+
+#addBookDialog > form > p > select {
+    padding: 5px 0px 5px 1px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+#addBookDialog form > div {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+#addBookDialog form > div > button {
+    padding: 5px 35px;
+    border: 1px solid gray;
+    border-radius: 12px;
+    font-size: 1.8rem;
+}
+
 
 .card-container {
     display: flex;

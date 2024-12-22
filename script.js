@@ -42,15 +42,51 @@ function displayBooks(library) {
     }
 }
 
-const dialog = document.querySelector("dialog");
 const newBookButton = document.querySelector(".new-book-button");
-const dialogCloseButton = document.querySelector("dialog button");
+const addBookDialog = document.getElementById("addBookDialog");
+const dialogTitle = addBookDialog.querySelector("#title");
+const dialogAuthor = addBookDialog.querySelector("#author");
+const dialogPages = addBookDialog.querySelector("#pages");
+const dialogHaveRead = addBookDialog.querySelector("select");
+const cancelBtn = addBookDialog.querySelector("#cancelBtn");
+const confirmBtn = addBookDialog.querySelector("#confirmBtn");
+
+function dialogEscAndEnterBtns(e) {
+    let clickEvent = new MouseEvent("click");
+    if (e.key === "Escape") {
+        addBookDialog.returnValue = "cancel";
+    } else if (e.key === "Enter") {
+        e.preventDefault();
+        confirmBtn.dispatchEvent(clickEvent);
+    };
+}
 
 newBookButton.addEventListener("click", () => {
-    dialog.showModal();
+    addBookDialog.showModal();
+    dialogTitle.value = "";
+    dialogAuthor.value = "";
+    dialogPages.value = "";
+    dialogHaveRead.value = "Yes";
+    addBookDialog.returnValue = "";
+    window.addEventListener("keydown", dialogEscAndEnterBtns);
 })
 
-dialogCloseButton.addEventListener("click", () => {
-    dialog.close();
+addBookDialog.addEventListener("close", (e) => {
+    let haveReadValue = "";
+    if (dialogHaveRead.value === "Yes") {
+        haveReadValue = "have read";
+    } else if (dialogHaveRead.value === "No") {
+        haveReadValue = "have not read";
+    };
+    if (addBookDialog.returnValue === "cancel") {
+        console.log(`cancel`);
+    } else {
+        console.log(`Title: ${dialogTitle.value}. Author: ${dialogAuthor.value}. Pages: ${dialogPages.value}. Have read: ${haveReadValue}.`);
+    };
+    window.removeEventListener("keypress", dialogEscAndEnterBtns);
 })
 
+cancelBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    addBookDialog.close("cancel");
+})
