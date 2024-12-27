@@ -10,36 +10,69 @@ function Book(title, author, pages, haveRead) {
     this.haveRead = haveRead;
 }
 
-Book.prototype.info = function() {
-    return `"${this.title}" by ${this.author}, ${this.pages} pages, ${this.haveRead}`;
-}
+// Book.prototype.info = function() {
+//     return `"${this.title}" by ${this.author}, ${this.pages} pages, ${this.haveRead}`;
+// }
 
 function addBookToLibrary(title, author, pages, haveRead) {
     let book = new Book(title, author, pages, haveRead);
     myLibrary.push(book);
 }
 
+const displayedBooks = [];
+
+function DisplayedBook(title, author) {
+    this.title = title;
+    this.author = author;
+}
+
+function addToDisplayedBooks(title, author) {
+    let displayedBook = new DisplayedBook(title, author);
+    displayedBooks.push(displayedBook);
+}
+
+function alreadyDisplayed(book) {
+    function matches(book1, book2) {
+        return (book1.title === book2.title && book1.author === book2.author);
+    };
+    function getMatch(book, arr) {
+        let matching = [];
+        for (const obj of arr) {
+            if (matches(book, obj)) {
+                matching.push(obj);
+            };
+        };
+        return matching;
+    };
+    return !(getMatch(book, displayedBooks)[0] === undefined);
+}
+
 let cardContainer = document.querySelector(".card-container");
 
 function displayBooks(library) {
     for (const book of library) {
-        const card = document.createElement("div");
-        card.classList.add("card");
-        cardContainer.appendChild(card);
-        const title = document.createElement("div");
-        title.classList.add("title");
-        title.textContent = `${book.title}`;
-        card.appendChild(title);
-        const author = document.createElement("p");
-        author.textContent = `by ${book.author}`;
-        card.appendChild(author);
-        const pages = document.createElement("p");
-        pages.textContent = `${book.pages} pages`;
-        card.appendChild(pages);
-        const haveRead = document.createElement("p");
-        haveRead.textContent = `${book.haveRead}`;
-        card.appendChild(haveRead);
-    }
+        if (alreadyDisplayed(book)) {
+            continue;
+        } else {
+            const card = document.createElement("div");
+            card.classList.add("card");
+            cardContainer.appendChild(card);
+            const title = document.createElement("div");
+            title.classList.add("title");
+            title.textContent = `${book.title}`;
+            card.appendChild(title);
+            const author = document.createElement("p");
+            author.textContent = `by ${book.author}`;
+            card.appendChild(author);
+            const pages = document.createElement("p");
+            pages.textContent = `${book.pages} pages`;
+            card.appendChild(pages);
+            const haveRead = document.createElement("p");
+            haveRead.textContent = `${book.haveRead}`;
+            card.appendChild(haveRead);
+            addToDisplayedBooks(book.title, book.author);
+        };
+    };
 }
 
 const newBookButton = document.querySelector(".new-book-button");
@@ -82,6 +115,8 @@ addBookDialog.addEventListener("close", (e) => {
         console.log(`cancel`);
     } else {
         console.log(`Title: ${dialogTitle.value}. Author: ${dialogAuthor.value}. Pages: ${dialogPages.value}. Have read: ${haveReadValue}.`);
+        addBookToLibrary(dialogTitle.value, dialogAuthor.value, dialogPages.value, haveReadValue);
+        displayBooks(myLibrary);
     };
     window.removeEventListener("keypress", dialogEscAndEnterBtns);
 })
