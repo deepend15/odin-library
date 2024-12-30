@@ -72,6 +72,10 @@ function displayBooks(library) {
             const haveRead = document.createElement("p");
             haveRead.textContent = `${book.haveRead}`;
             card.appendChild(haveRead);
+            const removeButton = document.createElement("button");
+            removeButton.classList.add("remove-button");
+            removeButton.textContent = `- remove book`;
+            card.appendChild(removeButton);
             addToDisplayedBooks(book.title, book.author);
         };
     };
