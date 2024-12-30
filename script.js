@@ -64,9 +64,11 @@ function displayBooks(library) {
             const author = document.createElement("p");
             author.textContent = `by ${book.author}`;
             card.appendChild(author);
-            const pages = document.createElement("p");
-            pages.textContent = `${book.pages} pages`;
-            card.appendChild(pages);
+            if (book.pages !== '') {
+                const pages = document.createElement("p");
+                pages.textContent = `${book.pages} pages`;
+                card.appendChild(pages);
+            };
             const haveRead = document.createElement("p");
             haveRead.textContent = `${book.haveRead}`;
             card.appendChild(haveRead);
