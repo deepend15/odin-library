@@ -1,6 +1,6 @@
 const myLibrary = [
-    {title: "Wool", author: "Hugh Howey", pages: 538, haveRead: "have read"},
-    {title: "The Institute", author: "Steven King", pages: 576, haveRead: "have read"},
+    // {title: "Wool", author: "Hugh Howey", pages: 538, haveRead: "have read"},
+    // {title: "The Institute", author: "Steven King", pages: 576, haveRead: "have read"},
 ];
 
 function Book(title, author, pages, haveRead) {
@@ -56,6 +56,7 @@ function displayBooks(library) {
         } else {
             const card = document.createElement("div");
             card.classList.add("card");
+            card.classList.add(`book${myLibrary.indexOf(book)}`);
             cardContainer.appendChild(card);
             const title = document.createElement("div");
             title.classList.add("title");
@@ -76,9 +77,21 @@ function displayBooks(library) {
             removeButton.classList.add("remove-button");
             removeButton.textContent = `- remove book`;
             card.appendChild(removeButton);
+            removeButton.addEventListener("click", removeBook);
             addToDisplayedBooks(book.title, book.author);
         };
     };
+}
+
+function removeBook(e) {
+    let indexInLibrary = Number(e.target.parentElement.className.at(-1));
+    myLibrary.splice(indexInLibrary, 1);
+    displayedBooks.splice(0, displayedBooks.length);
+    const cards = document.querySelectorAll(".card");
+    for (const card of cards) {
+        card.remove();
+    };
+    displayBooks(myLibrary);
 }
 
 const newBookButton = document.querySelector(".new-book-button");
@@ -110,7 +123,7 @@ newBookButton.addEventListener("click", () => {
     window.addEventListener("keydown", dialogEscAndEnterBtns);
 })
 
-addBookDialog.addEventListener("close", (e) => {
+addBookDialog.addEventListener("close", () => {
     let haveReadValue = "";
     if (dialogHaveRead.value === "Yes") {
         haveReadValue = "have read";
