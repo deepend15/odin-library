@@ -1,7 +1,4 @@
-const myLibrary = [
-    // {title: "Wool", author: "Hugh Howey", pages: 538, haveRead: "have read"},
-    // {title: "The Institute", author: "Steven King", pages: 576, haveRead: "have read"},
-];
+const myLibrary = [];
 
 function Book(title, author, pages, haveRead) {
     this.title = title;
@@ -9,10 +6,6 @@ function Book(title, author, pages, haveRead) {
     this.pages = pages;
     this.haveRead = haveRead;
 }
-
-// Book.prototype.info = function() {
-//     return `"${this.title}" by ${this.author}, ${this.pages} pages, ${this.haveRead}`;
-// }
 
 function addBookToLibrary(title, author, pages, haveRead) {
     let book = new Book(title, author, pages, haveRead);
@@ -47,7 +40,7 @@ function alreadyDisplayed(book) {
     return !(getMatch(book, displayedBooks)[0] === undefined);
 }
 
-let cardContainer = document.querySelector(".card-container");
+const cardContainer = document.querySelector(".card-container");
 
 function displayBooks(library) {
     for (const book of library) {
@@ -70,9 +63,25 @@ function displayBooks(library) {
                 pages.textContent = `${book.pages} pages`;
                 card.appendChild(pages);
             };
-            const haveRead = document.createElement("p");
-            haveRead.textContent = `${book.haveRead}`;
-            card.appendChild(haveRead);
+            const haveReadLine = document.createElement("div");
+            haveReadLine.classList.add("have-read-line");
+            card.appendChild(haveReadLine);
+            const haveReadCheckbox = document.createElement("input");
+            haveReadCheckbox.setAttribute("type", "checkbox");
+            haveReadCheckbox.setAttribute("name", "have-read-checkbox");
+            if (book.haveRead === "have read") {
+                haveReadCheckbox.setAttribute("checked", "true");
+            };
+            haveReadLine.appendChild(haveReadCheckbox);
+            const haveReadText = document.createElement("span");
+            if (book.haveRead === "have read") {
+                haveReadText.classList.add("read");
+            } else if (book.haveRead === "have not read") {
+                haveReadText.classList.add("unread");
+            };
+            haveReadText.textContent = `${book.haveRead}`;
+            haveReadLine.appendChild(haveReadText);
+            haveReadCheckbox.addEventListener("click", changeHaveReadText);
             const removeButton = document.createElement("button");
             removeButton.classList.add("remove-button");
             removeButton.textContent = `- remove book`;
@@ -131,9 +140,8 @@ addBookDialog.addEventListener("close", () => {
         haveReadValue = "have not read";
     };
     if (addBookDialog.returnValue === "cancel") {
-        console.log(`cancel`);
+        return;
     } else {
-        console.log(`Title: ${dialogTitle.value}. Author: ${dialogAuthor.value}. Pages: ${dialogPages.value}. Have read: ${haveReadValue}.`);
         addBookToLibrary(dialogTitle.value, dialogAuthor.value, dialogPages.value, haveReadValue);
         displayBooks(myLibrary);
     };
@@ -144,3 +152,23 @@ cancelBtn.addEventListener("click", (e) => {
     e.preventDefault();
     addBookDialog.close("cancel");
 })
+
+function changeHaveReadText(e) {
+    let indexInLibrary = Number(e.target.parentElement.parentElement.className.at(-1));
+    myLibrary[indexInLibrary].changeHaveRead();
+    e.target.nextElementSibling.classList.toggle("unread");
+    e.target.nextElementSibling.classList.toggle("read");
+    if (e.target.nextElementSibling.className === "read") {
+        e.target.nextElementSibling.textContent = "have read";
+    } else if (e.target.nextElementSibling.className === "unread") {
+        e.target.nextElementSibling.textContent = "have not read";
+    };
+}
+
+Book.prototype.changeHaveRead = function() {
+    if (this.haveRead === "have read") {
+        this.haveRead = "have not read";
+    } else if (this.haveRead === "have not read") {
+        this.haveRead = "have read";
+    };
+}
