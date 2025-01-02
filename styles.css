@@ -77,6 +77,10 @@ h1 {
     background-color: rgb(150, 150, 150);
 }
 
+::backdrop {
+    background-color: rgb(0, 0, 0, 0.4);
+}
+
 #addBookDialog {
     padding: 40px 25px 30px 25px;
     top: 50%;
