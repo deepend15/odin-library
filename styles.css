@@ -14,9 +14,14 @@ html {
     padding: 0;
 }
 
+:root {
+    --light-brown: rgb(224, 211, 195);
+}
+
 body {
     font-size: 2rem;
     text-align: center;
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 input, button, textarea, select {
@@ -39,13 +44,13 @@ h1, h2, h3, h4, h5 {
     background-attachment: fixed;
     background-position: center;
     /* fallback color */
-    background-color: rgb(224, 211, 195);
+    background-color: var(--light-brown);
     min-height: 100vh;
 }
 
 .h1-container {
-    background-color: rgb(224, 211, 195);
-    padding: 5px 18px;
+    background-color: var(--light-brown);
+    padding: 6px 18px 10px 18px;
     border: 8px ridge rgb(185, 140, 109);
     border-radius: 20px;
 }
@@ -59,8 +64,17 @@ h1 {
 .new-book-button {
     font-size: 1.8rem;
     padding: 5px 18px;
-    border: 1px solid gray;
+    border: 2px solid black;
     border-radius: 12px;
+    background-color: white;
+}
+
+.new-book-button:hover {
+    background-color: rgb(215, 215, 215);
+}
+
+.new-book-button:active {
+    background-color: rgb(150, 150, 150);
 }
 
 #addBookDialog {
