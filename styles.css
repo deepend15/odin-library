@@ -16,6 +16,8 @@ html {
 
 :root {
     --light-brown: rgb(224, 211, 195);
+    --button-hover: rgb(215, 215, 215);
+    --button-active: rgb(150, 150, 150);
 }
 
 body {
@@ -70,11 +72,11 @@ h1 {
 }
 
 .new-book-button:hover {
-    background-color: rgb(215, 215, 215);
+    background-color: var(--button-hover);
 }
 
 .new-book-button:active {
-    background-color: rgb(150, 150, 150);
+    background-color: var(--button-active);
 }
 
 ::backdrop {
@@ -86,12 +88,13 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-size: 1.8rem;
 }
 
 #addBookDialog > form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 25px;
     text-align: left;
 }
 
@@ -123,7 +126,7 @@ h1 {
 }
 
 #addBookDialog form > div {
-    margin-top: 15px;
+    margin-top: 5px;
     display: flex;
     justify-content: center;
     gap: 30px;
@@ -133,9 +136,16 @@ h1 {
     padding: 5px 35px;
     border: 1px solid gray;
     border-radius: 12px;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
+#addBookDialog form > div > button:hover {
+    background-color: var(--button-hover);
+}
+
+#addBookDialog form > div > button:active {
+    background-color: var(--button-active);
+}
 
 .card-container {
     display: flex;
