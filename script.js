@@ -92,17 +92,6 @@ function displayBooks(library) {
     };
 }
 
-function removeBook(e) {
-    let indexInLibrary = Number(e.target.parentElement.className.at(-1));
-    myLibrary.splice(indexInLibrary, 1);
-    displayedBooks.splice(0, displayedBooks.length);
-    const cards = document.querySelectorAll(".card");
-    for (const card of cards) {
-        card.remove();
-    };
-    displayBooks(myLibrary);
-}
-
 const newBookButton = document.querySelector(".new-book-button");
 const addBookDialog = document.getElementById("addBookDialog");
 const dialogTitle = addBookDialog.querySelector("#title");
@@ -132,6 +121,11 @@ newBookButton.addEventListener("click", () => {
     window.addEventListener("keydown", dialogEscAndEnterBtns);
 })
 
+cancelBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    addBookDialog.close("cancel");
+})
+
 addBookDialog.addEventListener("close", () => {
     let haveReadValue = "";
     if (dialogHaveRead.value === "Yes") {
@@ -148,10 +142,24 @@ addBookDialog.addEventListener("close", () => {
     window.removeEventListener("keypress", dialogEscAndEnterBtns);
 })
 
-cancelBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    addBookDialog.close("cancel");
-})
+function removeBook(e) {
+    let indexInLibrary = Number(e.target.parentElement.className.at(-1));
+    myLibrary.splice(indexInLibrary, 1);
+    displayedBooks.splice(0, displayedBooks.length);
+    const cards = document.querySelectorAll(".card");
+    for (const card of cards) {
+        card.remove();
+    };
+    displayBooks(myLibrary);
+}
+
+Book.prototype.changeHaveRead = function() {
+    if (this.haveRead === "have read") {
+        this.haveRead = "have not read";
+    } else if (this.haveRead === "have not read") {
+        this.haveRead = "have read";
+    };
+}
 
 function changeHaveReadText(e) {
     let indexInLibrary = Number(e.target.parentElement.parentElement.className.at(-1));
@@ -162,13 +170,5 @@ function changeHaveReadText(e) {
         e.target.nextElementSibling.textContent = "have read";
     } else if (e.target.nextElementSibling.className === "unread") {
         e.target.nextElementSibling.textContent = "have not read";
-    };
-}
-
-Book.prototype.changeHaveRead = function() {
-    if (this.haveRead === "have read") {
-        this.haveRead = "have not read";
-    } else if (this.haveRead === "have not read") {
-        this.haveRead = "have read";
     };
 }

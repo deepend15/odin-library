@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5 {
   }
 
 .main-container {
-    padding: 50px 75px;
+    padding: 40px 75px;
     display: grid;
     justify-items: center;
     gap: 30px;
