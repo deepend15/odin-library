@@ -177,7 +177,7 @@ button:active {
 .card > .title {
     align-self: center;
     font-size: 2.3rem;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .card > p,
