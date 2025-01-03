@@ -141,6 +141,22 @@ button:active {
     font-size: 1.6rem;
 }
 
+#already-in-library-dialog {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.6rem;
+    padding: 10px 15px;
+}
+
+#already-in-library-dialog > p {
+    margin-bottom: 10px;
+}
+
+.ok-button {
+    padding: 3px 7px;
+}
+
 .card-container {
     display: flex;
     flex-wrap: wrap;

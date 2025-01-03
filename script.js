@@ -10,7 +10,10 @@ function Book(title, author, pages, haveRead) {
 function addBookToLibrary(title, author, pages, haveRead) {
     let book = new Book(title, author, pages, haveRead);
     if (alreadyDisplayed(book)) {
-        alert("Book already in library!");
+        const alreadyInLibraryDialog = document.getElementById("already-in-library-dialog");
+        const okButton = document.querySelector(".ok-button");
+        alreadyInLibraryDialog.showModal();
+        okButton.addEventListener("click", () => alreadyInLibraryDialog.close());
     } else {
         myLibrary.push(book);
     }
