@@ -1,4 +1,13 @@
 @font-face {
+    font-family: 'bainsleyregular';
+    src: url('./fonts/bainsley_roman-webfont.woff2') format('woff2'),
+         url('./fonts/bainsley_roman-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
     font-family: 'almendra_scitalic';
     src: url('./fonts/almendrasc-italic-webfont.woff2') format('woff2'),
          url('./fonts/almendrasc-italic-webfont.woff') format('woff');
@@ -35,7 +44,7 @@ html {
 body {
     font-size: 2rem;
     text-align: center;
-    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: 'bainsleyregular', system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 input, button, textarea, select {
@@ -78,7 +87,6 @@ h1 {
 }
 
 .new-book-button {
-    font-size: 1.8rem;
     padding: 5px 18px;
     border: 2px solid black;
     border-radius: 12px;
@@ -102,7 +110,6 @@ button:active {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1.8rem;
 }
 
 #addBookDialog > form {
@@ -122,6 +129,7 @@ button:active {
 #addBookDialog > form > p > input,
 #addBookDialog > form > p > select {
     width: 60%;
+    border-radius: 4px;
 }
 
 #addBookDialog > form > p > label {
@@ -150,14 +158,20 @@ button:active {
     padding: 5px 35px;
     border: 1px solid gray;
     border-radius: 12px;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+}
+
+#addBookDialog > form > p > input:focus,
+#addBookDialog > form > p > select:focus,
+#addBookDialog form > div > button:focus {
+    outline: 1px solid black;
 }
 
 #already-in-library-dialog {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     padding: 10px 15px;
 }
 
@@ -215,7 +229,7 @@ button:active {
 
 .card > p,
 .have-read-line > span {
-    font-size: 1.7rem;
+    font-size: 1.9rem;
 }
 
 .have-read-line {
@@ -226,12 +240,12 @@ button:active {
 
 .remove-button {
     visibility: hidden;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     padding: 2px 8px;
     border-radius: 8px;
     border: 1px solid gray;
     position: absolute;
-    top: 30px;
+    top: 20px;
     left: 40px;
 }
 

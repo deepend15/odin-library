@@ -3,9 +3,33 @@
 
 
 @font-face {
+    font-family: 'bainsleyregular';
+    src: url('bainsley_roman-webfont.woff2') format('woff2'),
+         url('bainsley_roman-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
     font-family: 'almendra_scitalic';
     src: url('almendrasc-italic-webfont.woff2') format('woff2'),
          url('almendrasc-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'almendra_scbold_italic';
+    src: url('almendrasc-bolditalic-webfont.woff2') format('woff2'),
+         url('almendrasc-bolditalic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
