@@ -15,9 +15,11 @@ html {
 }
 
 :root {
-    --light-brown: rgb(224, 211, 195);
+    --light-brown: rgb(255, 238, 215);;
     --button-hover: rgb(215, 215, 215);
     --button-active: rgb(150, 150, 150);
+    --border-brown: rgb(185, 140, 109);
+    --darker-brown: rgb(129, 91, 67);
 }
 
 body {
@@ -51,9 +53,9 @@ h1, h2, h3, h4, h5 {
 }
 
 .h1-container {
-    background-color: var(--light-brown);
+    background: linear-gradient(45deg, var(--light-brown), white);
     padding: 6px 18px 10px 18px;
-    border: 8px ridge rgb(185, 140, 109);
+    border: 8px ridge var(--border-brown);
     border-radius: 20px;
 }
 
@@ -102,7 +104,7 @@ button:active {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
 }
 
 #addBookDialog > form > p > input,
@@ -146,28 +148,41 @@ button:active {
     gap: 50px;
 }
 
+.indiv-card-container {
+    height: 320px;
+    width: 210px;
+    display: grid;
+    place-items: center;
+}
+
 .card {
     height: 300px;
     width: 200px;
-    border: 1px solid black;
-    border-radius: 8px;
+    border-left: 9px solid var(--darker-brown);
+    border-top: 2px solid var(--border-brown);
+    border-right: 8px double var(--border-brown);
+    border-bottom: 6px double var(--border-brown);
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 4px;
     display: grid;
     justify-items: center;
     grid-template-rows: 1fr repeat(3, min-content);
     padding: 20px;
     gap: 15px;
     position: relative;
-    background-color: white;
+    background: linear-gradient(45deg, var(--light-brown), white);
+    box-shadow: 0 0 4px var(--darker-brown);
 }
 
 .card > .title {
     align-self: center;
     font-size: 2.3rem;
+    font-weight: bold;
 }
 
 .card > p,
 .have-read-line > span {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
 }
 
 .have-read-line {
@@ -183,11 +198,18 @@ button:active {
     border-radius: 8px;
     border: 1px solid gray;
     position: absolute;
-    top: 25px;
+    top: 30px;
+    left: 40px;
 }
 
 .card:hover {
+    height: 320px;
+    width: 210px;
+    box-shadow: 0 0 4px var(--light-brown);
     button {
         visibility: visible;
+    }
+    .title {
+        font-size: 2.4rem;
     }
 }

@@ -9,7 +9,11 @@ function Book(title, author, pages, haveRead) {
 
 function addBookToLibrary(title, author, pages, haveRead) {
     let book = new Book(title, author, pages, haveRead);
-    myLibrary.push(book);
+    if (alreadyDisplayed(book)) {
+        alert("Book already in library!");
+    } else {
+        myLibrary.push(book);
+    }
 }
 
 const displayedBooks = [];
@@ -47,10 +51,13 @@ function displayBooks(library) {
         if (alreadyDisplayed(book)) {
             continue;
         } else {
+            const indivCardContainer = document.createElement("div");
+            indivCardContainer.classList.add("indiv-card-container");
+            cardContainer.appendChild(indivCardContainer);
             const card = document.createElement("div");
             card.classList.add("card");
             card.classList.add(`book${myLibrary.indexOf(book)}`);
-            cardContainer.appendChild(card);
+            indivCardContainer.appendChild(card);
             const title = document.createElement("div");
             title.classList.add("title");
             title.textContent = `${book.title}`;
@@ -146,7 +153,7 @@ function removeBook(e) {
     let indexInLibrary = Number(e.target.parentElement.className.at(-1));
     myLibrary.splice(indexInLibrary, 1);
     displayedBooks.splice(0, displayedBooks.length);
-    const cards = document.querySelectorAll(".card");
+    const cards = document.querySelectorAll(".indiv-card-container");
     for (const card of cards) {
         card.remove();
     };
