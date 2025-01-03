@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'almendra_scitalic';
+    src: url('./fonts/almendrasc-italic-webfont.woff2') format('woff2'),
+         url('./fonts/almendrasc-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 html {
     box-sizing: border-box;
     font-size: 62.5%;
@@ -20,6 +29,7 @@ html {
     --button-active: rgb(150, 150, 150);
     --border-brown: rgb(185, 140, 109);
     --darker-brown: rgb(129, 91, 67);
+    --darkest-brown: rgb(55, 24, 4);
 }
 
 body {
@@ -54,7 +64,7 @@ h1, h2, h3, h4, h5 {
 
 .h1-container {
     background: linear-gradient(45deg, var(--light-brown), white);
-    padding: 6px 18px 10px 18px;
+    padding: 6px 20px;
     border: 8px ridge var(--border-brown);
     border-radius: 20px;
 }
@@ -62,7 +72,9 @@ h1, h2, h3, h4, h5 {
 h1 {
     font-size: 3.6rem;
     font-weight: bold;
-    color: rgb(55, 24, 4)
+    font-family: 'almendra_scitalic', system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: var(--darkest-brown);
+    word-spacing: 6px;
 }
 
 .new-book-button {
@@ -187,13 +199,18 @@ button:active {
     gap: 15px;
     position: relative;
     background: linear-gradient(45deg, var(--light-brown), white);
+    color: var(--darkest-brown);
     box-shadow: 0 0 4px var(--darker-brown);
 }
 
 .card > .title {
     align-self: center;
-    font-size: 2.3rem;
-    font-weight: 500;
+    overflow: auto;
+    max-height: 100%;
+    font-size: 2.6rem;
+    font-weight: bold;
+    font-family: 'almendra_scitalic', system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    word-spacing: 6px;
 }
 
 .card > p,
@@ -226,6 +243,6 @@ button:active {
         visibility: visible;
     }
     .title {
-        font-size: 2.4rem;
+        font-size: 2.8rem;
     }
 }
