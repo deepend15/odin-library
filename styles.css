@@ -71,11 +71,11 @@ h1 {
     background-color: white;
 }
 
-.new-book-button:hover {
+button:hover {
     background-color: var(--button-hover);
 }
 
-.new-book-button:active {
+button:active {
     background-color: var(--button-active);
 }
 
@@ -137,14 +137,6 @@ h1 {
     border: 1px solid gray;
     border-radius: 12px;
     font-size: 1.6rem;
-}
-
-#addBookDialog form > div > button:hover {
-    background-color: var(--button-hover);
-}
-
-#addBookDialog form > div > button:active {
-    background-color: var(--button-active);
 }
 
 .card-container {
