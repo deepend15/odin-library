@@ -1,10 +1,27 @@
 const myLibrary = [];
 
-function Book(title, author, pages, haveRead) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.haveRead = haveRead;
+// function Book(title, author, pages, haveRead) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.haveRead = haveRead;
+// }
+
+class Book {
+    constructor(title, author, pages, haveRead) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.haveRead = haveRead;
+    }
+
+    changeHaveRead() {
+        if (this.haveRead === "have read") {
+            this.haveRead = "have not read";
+        } else if (this.haveRead === "have not read") {
+            this.haveRead = "have read";
+        };
+    }
 }
 
 function addBookToLibrary(title, author, pages, haveRead) {
@@ -21,9 +38,16 @@ function addBookToLibrary(title, author, pages, haveRead) {
 
 const displayedBooks = [];
 
-function DisplayedBook(title, author) {
-    this.title = title;
-    this.author = author;
+// function DisplayedBook(title, author) {
+//     this.title = title;
+//     this.author = author;
+// }
+
+class DisplayedBook {
+    constructor(title, author) {
+        this.title = title;
+        this.author = author;
+    }
 }
 
 function addToDisplayedBooks(title, author) {
@@ -133,7 +157,7 @@ newBookButton.addEventListener("click", () => {
 
 cancelBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    addBookDialog.close("cancel");
+    addBookDialog.close();
 })
 
 addBookDialog.addEventListener("close", () => {
@@ -163,13 +187,13 @@ function removeBook(e) {
     displayBooks(myLibrary);
 }
 
-Book.prototype.changeHaveRead = function() {
-    if (this.haveRead === "have read") {
-        this.haveRead = "have not read";
-    } else if (this.haveRead === "have not read") {
-        this.haveRead = "have read";
-    };
-}
+// Book.prototype.changeHaveRead = function() {
+//     if (this.haveRead === "have read") {
+//         this.haveRead = "have not read";
+//     } else if (this.haveRead === "have not read") {
+//         this.haveRead = "have read";
+//     };
+// }
 
 function changeHaveReadText(e) {
     let indexInLibrary = Number(e.target.parentElement.parentElement.className.at(-1));
