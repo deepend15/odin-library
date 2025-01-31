@@ -157,7 +157,7 @@ newBookButton.addEventListener("click", () => {
 
 cancelBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    addBookDialog.close();
+    addBookDialog.close("cancel");
 })
 
 addBookDialog.addEventListener("close", () => {
