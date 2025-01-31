@@ -1,5 +1,7 @@
 const myLibrary = [];
 
+// refactored below object constructor as a class ('Book')
+
 // function Book(title, author, pages, haveRead) {
 //     this.title = title;
 //     this.author = author;
@@ -37,6 +39,8 @@ function addBookToLibrary(title, author, pages, haveRead) {
 }
 
 const displayedBooks = [];
+
+// refactored below object constructor as a class ('DisplayedBook')
 
 // function DisplayedBook(title, author) {
 //     this.title = title;
@@ -186,6 +190,8 @@ function removeBook(e) {
     };
     displayBooks(myLibrary);
 }
+
+// below function was added to 'Book' class
 
 // Book.prototype.changeHaveRead = function() {
 //     if (this.haveRead === "have read") {
