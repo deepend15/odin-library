@@ -139,14 +139,10 @@ const dialogHaveRead = addBookDialog.querySelector("select");
 const cancelBtn = addBookDialog.querySelector("#cancelBtn");
 const confirmBtn = addBookDialog.querySelector("#confirmBtn");
 
-function dialogEscAndEnterBtns(e) {
-    let clickEvent = new MouseEvent("click");
+function dialogEscBtn(e) {
     if (e.key === "Escape") {
-        addBookDialog.returnValue = "cancel";
-    } else if (e.key === "Enter") {
-        e.preventDefault();
-        confirmBtn.dispatchEvent(clickEvent);
-    };
+        addBookDialog.close("cancel");
+    }
 }
 
 newBookButton.addEventListener("click", () => {
@@ -156,7 +152,7 @@ newBookButton.addEventListener("click", () => {
     dialogPages.value = "";
     dialogHaveRead.value = "Yes";
     addBookDialog.returnValue = "";
-    window.addEventListener("keydown", dialogEscAndEnterBtns);
+    window.addEventListener("keydown", dialogEscBtn);
 })
 
 cancelBtn.addEventListener("click", (e) => {
@@ -177,7 +173,7 @@ addBookDialog.addEventListener("close", () => {
         addBookToLibrary(dialogTitle.value, dialogAuthor.value, dialogPages.value, haveReadValue);
         displayBooks(myLibrary);
     };
-    window.removeEventListener("keypress", dialogEscAndEnterBtns);
+    window.removeEventListener("keypress", dialogEscBtn);
 })
 
 function removeBook(e) {
